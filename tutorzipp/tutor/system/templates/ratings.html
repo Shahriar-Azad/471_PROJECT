@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Review Page</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .feedback-list {
+        list-style-type: none;
+        padding: 0;
+    }
+    .feedback-item {
+        margin-bottom: 10px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+    }
+    #feedbackInput {
+        width: calc(100% - 70px);
+    }
+    .rating {
+        margin-bottom: 10px;
+    }
+    .rating input {
+        display: none;
+    }
+    .rating label {
+        font-size: 24px;
+        color: #ccc;
+        cursor: pointer;
+    }
+    .rating label:hover,
+    .rating label:hover ~ label,
+    .rating input:checked ~ label {
+        color: orange;
+    }
+    .thank-you-message {
+        display: none;
+        color: rgb(55, 41, 252);
+        font-weight: bold;
+    }
+
+    button[type="submit"] {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: navy;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Ratings</h2>
+    <form id="feedbackForm">
+        <div class="rating">
+            <input type="radio" name="rating" id="star5" value="5"><label for="star5">☆</label>
+            <input type="radio" name="rating" id="star4" value="4"><label for="star4">☆</label>
+            <input type="radio" name="rating" id="star3" value="3"><label for="star3">☆</label>
+            <input type="radio" name="rating" id="star2" value="2"><label for="star2">☆</label>
+            <input type="radio" name="rating" id="star1" value="1"><label for="star1">☆</label>
+        </div>
+        <label for="feedbackInput">Write your reviews:</label><br>
+        <textarea id="feedbackInput" name="feedback" rows="4" required></textarea><br>
+        <br>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+    <p class="thank-you-message" id="thankYouMessage">Thank you for the rating!</p>
+    <ul class="feedback-list" id="feedbackList">
+        <!-- Feedback items will be appended here -->
+    </ul>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const feedbackForm = document.getElementById('feedbackForm');
+        const feedbackList = document.getElementById('feedbackList');
+        const thankYouMessage = document.getElementById('thankYouMessage');
+
+        feedbackForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const feedbackInput = document.getElementById('feedbackInput').value;
+            const rating = document.querySelector('input[name="rating"]:checked');
+            if (!feedbackInput.trim() || !rating) return;
+
+            const feedbackItem = document.createElement('li');
+            feedbackItem.classList.add('feedback-item');
+            feedbackItem.innerHTML = `${feedbackInput} - Rating: ${rating.value}`;
+
+            feedbackList.appendChild(feedbackItem);
+
+            // Clear input field after submission
+            document.getElementById('feedbackInput').value = '';
+            // Clear rating after submission
+            document.querySelectorAll('input[name="rating"]').forEach(radio => radio.checked = false);
+            
+            // Show the thank you message
+            thankYouMessage.style.display = 'block';
+            // Hide the thank you message after 3 seconds
+            setTimeout(function() {
+                thankYouMessage.style.display = 'none';
+            }, 3000);
+        });
+    });
+</script>
+
+</body>
+</html>

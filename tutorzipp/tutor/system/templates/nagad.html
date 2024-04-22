@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>bKash Payment Page</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color:bisque;
+
+    }
+
+    .container {
+        max-width: 500px;
+        margin: 50px auto;
+        background-color: rgba(135, 106, 106, 0.7); /* Add opacity to the background color */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-image: url('https://www.logo.wine/a/logo/Nagad/Nagad-Logo.wine.svg'); /* Replace 'your-image-path.jpg' with the path to your image */
+        background-size: left; /* Cover the entire background */
+        background-position: bottom; /* Center the background image */
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        background-color: #FF5A00;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #FF7E29;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Nagad Payment</h2>
+    <form action="#" method="post">
+        <label for="phone-number">Phone Number</label>
+        <input type="text" id="phone-number" name="phone-number" placeholder="Enter phone number" required>
+
+        <label for="amount">Amount</label>
+        <input type="number" id="amount" name="amount" placeholder="Enter amount" required>
+
+        <input type="submit" value="Pay with Nagad">
+    </form>
+</div>
+
+</body>
+</html>

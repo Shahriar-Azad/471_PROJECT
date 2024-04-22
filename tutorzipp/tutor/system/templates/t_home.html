@@ -1,0 +1,182 @@
+{% load static %}
+
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#"><i style="font-size:24px" class="fa">&#xf299;</i>EduCare</a>
+  
+    <!-- Toggler/collapsible Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 't_home' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'profile' %}">MyProfile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'video' %}">DemoClasses</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'available' %}">AvailableTutors</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'Addtutor' %}">AddTutor</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'tutor_reg' %}">RegisterTutor</a>
+      </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'visa' %}">Payment</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'notification' %}">Notification</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'home' %}">Chat</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'ratings' %}">Ratings</a>
+        </li>
+      </ul>
+      <form method="get" action="available" class="form-inline my-2 my-lg-0 mr-3">
+        <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search location" aria-label="Search">
+        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+      </form>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'index' %}">Log out</a>
+        </li>
+
+      </ul>
+    </div>
+</nav>
+
+
+<div id="demo" class="carousel slide" data-ride="carousel">
+
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+  </ul>
+  
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'images/pic1.png' %}" alt="picture1" width="100%" height="95%">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/helloooo.avif' %}" alt="picture2" width="100%" height="95%">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/pic3.jpg' %}" alt="picture3" width="100%" height="95%">
+    </div>
+  </div>
+  
+
+
+  
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div>
+
+
+
+<style>
+ 
+  .column {
+      float: left;
+      width: 30%;
+      margin-left: 15%;
+  }
+  .column {
+      float: left;
+      width: 30%;
+      /* margin-left: 55%; */
+  }
+  .row:after {
+      content: "";
+      display: table;
+      clear: both;
+  }
+</style>
+<div class="row">
+  <!-- First Column -->
+  <div class="column">
+      <h2>First Column</h2>
+      <!-- Django for loop for items in the first column -->
+      {% for item in data %}
+        {% if forloop.counter|divisibleby:2 %}
+      <!-- <img src="{{ item.image }}" alt="Image"> -->
+          <p>Name:{{ item.name }}</p>
+          <p>NID:{{ item.NID }}</p>
+          <p>Area:{{ item.area }}</p>
+          <p>Mobile:{{ item.mobile }}</p>
+          <p>Primary:{{ item.primary }}</p>
+          <p>JSC:{{ item.junior_secondary }}</p>
+          <p>SSC:{{ item.secondary}}</p>
+          <p>HSC:{{ item.hsc }}</p></var>
+          <P>Undergrade:{{ item.undergrade }}</P>
+          <form method="post">
+            {% csrf_token %}
+            <button type="submit" name="submit_button" value= "{{ item.name }}">Educational Records:</button>
+            
+        </form>
+
+        <br><br>
+        {% endif %}
+      {% endfor %}
+  </div>
+  <!-- Second Column -->
+  <div class="column">
+      <h2>Second Column</h2>
+      <!-- Django for loop for items in the second column -->
+    {% for item in data %}
+      {% if not forloop.counter|divisibleby:2 %}  
+        <p>Name:{{ item.name }}</p>
+        <p>NID:{{ item.NID }}</p>
+        <p>Area:{{ item.area }}</p>
+        <p>Mobile:{{ item.mobile }}</p>
+        <p>Primary:{{ item.primary }}</p>
+        <p>JSC:{{ item.junior_secondary }}</p>
+        <p>SSC:{{ item.secondary}}</p>
+        <p>HSC:{{ item.hsc }}</p></var>
+        <P>Undergrade:{{ item.undergrade }}</P>
+        <form method="post">
+          {% csrf_token %}
+          <button type="submit" name="submit_button" value= "{{ item.name }}">Educational Records:</button>
+          
+      </form>
+        <br><br>
+        {% endif %}
+      {% endfor %}
+  </div>
+</div>
+

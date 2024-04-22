@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>bKash Payment Page</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #887979;
+        background-image:url('https://seeklogo.com/images/B/bkash-logo-FBB258B90F-seeklogo.com.png');
+        max-width: 10 px ;
+        background-position: left;
+        margin:0 px ;
+        padding: 10 px;
+        background-repeat: no-repeat;
+    }
+
+    .container {
+        max-width: 550px;
+        
+        margin: 50px auto;
+        background-color: #793737;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px ;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        background-color: #a62f1d;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #FF7E29;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>bKash Payment</h2>
+    <form action="#" method="post">
+        <label for="phone-number">Phone Number</label>
+        <input type="text" id="phone-number" name="phone-number" placeholder="Enter phone number" required>
+
+        <label for="amount">Amount</label>
+        <input type="number" id="amount" name="amount" placeholder="Enter amount" required>
+
+        <input type="submit" value="Pay with bKash">
+    </form>
+</div>
+
+</body>
+</html>

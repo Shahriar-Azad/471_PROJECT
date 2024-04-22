@@ -1,0 +1,87 @@
+{% include 'header.html' %}
+
+<script>
+    function checkpassword()
+    {
+        if(document.signup.password.value!=document.signup.cpassword.value)
+    {
+        alert('Password and repeat password field does not match');
+        document.signup.cpassword.focus();
+        return false;
+    }
+        return true;
+    }
+</script>
+
+
+<div class="card shadow m-5">
+    <div class="card-body">
+        <h5 class="p-2" style="border-bottom: 2px solid orange">Create an Account</h5>
+
+        <div class="container-fluid">
+            <form method="post" name="signup" onsubmit="return checkpassword()">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" name="firstname" class="form-control" placeholder="Enter First Name" pattern="[A-Za-z]+" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" name="lastname" class="form-control" placeholder="Enter Last Name" pattern="[A-Za-z]+" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" name="email" class="form-control" placeholder="Enter email address" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <select name="gender" class="form-control" required>
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Create a Password</label>
+                            <input type="password" name="password" class="form-control" placeholder="Enter your password" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Confirm Password</label>
+                            <input type="password" name="cpassword" class="form-control" placeholder="Confirm password" required>
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" value="Submit" class="m-2 px-3 btn btn-primary">
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+{% if error == "no" %}
+<script>
+    alert('Signup Successful');
+    window.location = ('{% url 't_login' %}');
+</script>
+{% endif %}
+{% if error == "yes" %}
+
+<script>
+    alert('Something went wrong, Try again');
+</script>
+
+{% endif %}

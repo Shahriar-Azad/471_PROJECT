@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tutor Registration page</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 65%;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(53, 22, 22, 0.1);
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    a {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 50%;
+    }
+
+    button {
+       
+        background-color: #5c4caf;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+    }
+        
+    .image-button{
+        width: 30%; 
+        height: 30%;
+
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+  
+    <h2>Tutor Registration</h2>
+    <form  name="tutor_reg" method="post">
+        {% csrf_token %}
+        <label for="Name">Email</label>
+        <input type="text" id="Name" name="Name" placeholder="Enter Your Name" required>
+
+        <label for="id">NID or Birth Certificate</label>
+        <input type="number" id="id" name="NID" placeholder="Enter NID " required>
+
+        <label for="address"> Present Address</label>
+        <input type="text" id="address" name="address" placeholder="Enter present Address" required>
+        <label for="S.S.C">S.S.C</label>
+        <input type="text" id="S.S.C" name="S.S.C_div" placeholder="Enter S.S.C Division" required>
+        <input type="text" id="S.S.C" name="S.S.C_yr" placeholder="Enter S.S.C YEAR" required>
+        <input type="text" id="S.S.C" name="S.S.C_res" placeholder="Enter S.S.C result" required>
+        <input type="text" id="S.S.C" name="S.S.C_name" placeholder="Enter School Name" required>
+
+        <label for="H.S.C">H.S.C</label>
+        <input type="text" id="H.S.C" name="H.S.C_div" placeholder="Enter H.S.C Division" required>
+        <input type="text" id="H.S.C" name="H.S.C_yr" placeholder="Enter H.S.C YEAR" required>
+        <input type="text" id="H.S.C" name="H.S.C_res" placeholder="Enter H.S.C result" required>
+        <input type="text" id="grad" name="H.S.C_name" placeholder="Enter University Name" required>
+
+        <label for="Grad">Undergraduation</label>
+        <input type="text" id="grad" name="grad_sub" placeholder="Enter Undergraduation subject" required>
+        <input type="text" id="grad" name="grad_yr" placeholder="Enter Undergraduation passing  Year" required>
+        <input type="text" id="grad" name="grad_cg" placeholder="Enter current CGPA" required>
+        <input type="text" id="grad" name="grad_name" placeholder="Enter University Name" required>
+
+		
+		
+        <button type="submit" >Submit</button></br>
+        <br>
+        <a href="{% url 'tutor_reg2' %}">Go to next page</a>
+        <!-- <input type="submit" value="Go to next page"> -->
+    </form>
+</div>
+{% if error == "no" %}
+<script>
+    alert('Signup Successful');
+    window.location = ('{% url 't_login' %}');
+</script>
+{% endif %}
+{% if error == "yes" %}
+
+<script>
+    alert('Something went wrong, Try again');
+</script>
+
+{% endif %}
+</body>
+</html>
+
+

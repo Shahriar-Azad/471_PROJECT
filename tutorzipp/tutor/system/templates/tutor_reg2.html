@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tutor Information2</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 65%;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(53, 22, 22, 0.1);
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+
+    }
+    .image-button{
+        width: 30%; 
+        height: 30%;
+
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Choose Your further Tutor Information</h2>
+    <form action="#" method="post" id="new">
+        {% csrf_token %}
+        <label for="Name">Email</label>
+        <input type="text" id="Name" name="Name" placeholder="Enter Your Name" required>
+
+        <label for="id">NID or Birth Certificate</label>
+        <input type="number" id="id" name="NID" placeholder="Enter NID " required>
+
+        <label for="class">Choose Class</label>
+        <input type="checkbox" name="primary" value="yes1" >Primary level (Class 1 to  Class 5)<br>
+        <!-- <input type="text" id="card-number" name="number1" placeholder="Enter subject" > -->
+        <input type="checkbox" name="junior_secondary" value="yes2" >Junior Secondary level (Class 6 to  Class 8)<br>
+        <!-- <input type="text" id="card-number" name="number2" placeholder="Enter subject"> -->
+        <input type="checkbox" name="secondary" value="yes3" >Secondary level (Class 1 to  Class 5)<br>
+        <!-- <input type="text" id="card-number" name="number3" placeholder="Enter subject" > -->
+        <input type="checkbox" name="hsc" value="yes4" >Higher Secondary level (Class 11 to  Class 12)<br>
+        <!-- <input type="text" id="card-number" name="number4" placeholder="Enter subject" > -->
+        <input type="checkbox" name="undergrade" value="yes5" >Undergraduation level <br>
+        <!-- <input type="text" id="card-number" name="number5" placeholder="Enter subject" > -->
+        <input type="checkbox" name="postgrade" value="yes6" >Post Graduation level <br>
+        <!-- <input type="text" id="card-number" name="number6" placeholder="Enter subject"> -->
+     
+        <label for="class">Choose media</label>
+        <input type="checkbox" name="online" value="yes" >Online<br>
+        <input type="checkbox" name="Offline" value="yes" >Offline<br>
+<br>
+		<label for="Name">Area</label>
+        <input type="text" id="Area" name="Area" placeholder="Enter area" required>
+		
+		<label for="exp">Expeiance Year</label>
+        <input type="number" id="exp" name="experiance" placeholder="Enter Experiance " required><br>
+		<label for="image"> Your Image :
+		<input type="file" id="image" name="image" accept="image/*" required>
+		</label>
+		
+		
+        <label> Your Mobile :    
+            <input type="int" id="image" name="mobile"  accept="pdf/*" ></label>
+		<br>
+       <br><input type="submit" value="Submit">
+       <a  href ="{% url 't_home' %}"><h3>Back to Home Page</h3></a>
+    </form>
+</div>
+<div id="additionalField" style="display: none;">
+  <!-- New field will be displayed here -->
+  <label for="newField">subject:</label>
+  <input type="text" id="newField">
+</div>
+
+{% if error == "no" %}
+<script>
+    alert('Signup Successful');
+    window.location = ('{% url 't_home' %}');
+</script>
+{% endif %}
+{% if error == "yes" %}
+
+<script>
+    alert('Something went wrong, Try again');
+</script>
+
+{% endif %}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notification</title></head>
+<body>
+    
+<h1  style  = "text-align:center" ;><b>My Notification:</b></h1>
+<div class="container">
+    <div class="profile">
+        
+        <div class="info">
+            
+            {% for item in data %}
+
+            <h2>Student Name:{{ item.stdname }} {{item.stdname_last}}</h2>
+          
+            <p>Email: {{ item.stdemail }}</p>
+            
+		
+            
+            
+           
+            <p>Contact: {{ item.contact }}</p>
+          
+            <p>Area: {{ item.Area }}</p>
+        
+           
+           
+            <p1>Want to Join :{{ item.date }}</p1>
+            <br><br>
+            <p1>Want to Pay: {{item.pay}}</p1>
+            <br><br><br>
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" name="submit_button" value= "{{ item.stdemail }}">Approve</button>
+                <button type="submit" name="reject_button" value="{{ item.stdemail }}" >Reject </button>
+                </form>
+                
+                
+                {% endfor%}                  
+    
+    <script>
+    
+    {% if request.method == 'POST' %}
+       
+        {% if request.POST.submit_button %}
+
+            alert('Approval for {{ request.POST.submit_button }} submitted successfully.');
+            
+            {% endif %}
+    {% endif %}
+</script>
+
+            
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
